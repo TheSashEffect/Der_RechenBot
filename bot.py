@@ -144,7 +144,7 @@ async def spruch(ctx):
 
 
 #wenn !f groszes F aus emotes
-@bot.command()
+@bot.command(help = "test")
 async def f(ctx):
     response = '<:balls:1122153712840871996>'
     await ctx.send(4 * response + '\n' + response + '\n' + 2 * response + '\n' + response + '\n' + response)
