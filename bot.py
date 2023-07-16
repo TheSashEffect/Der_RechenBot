@@ -13,7 +13,7 @@ from discord.ext import commands
 
 
 
-#öffnet yogi tea quotes datei bei start von bot
+#oeffnet yogi tea quotes datei bei start von bot
 with open('./yogi_tea_quotes.txt', encoding='utf-8') as f:
     yogi_tea_quotes = f.read().split("|") 
 
