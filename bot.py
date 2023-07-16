@@ -401,7 +401,7 @@ async def boosting(ctx, message=''):
     if ctx.guild.id != 1120611898937847881: 
         await ctx.send("You're not on the right server")
     else:
-        channel = bot.get_channel(1128569303776636968)
+        channel = bot.get_channel(1120778128005005312)
         boosttype = message.split(",")[0]
         boostdate = message.split(",")[1]
         boosttime = message.split(",")[2]
