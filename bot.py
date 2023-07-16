@@ -277,29 +277,28 @@ async def on_raw_reaction_add(payload):
 
 
         role_name = None
-        match payload.emoji.name:
-            case "🔴":
-                role_name = "weekdays_morning"
-            case "🟠":
-                role_name = "weekdays_midday"
-            case "🟡":
-                role_name = "weekdays_evening"
-            case "🟢":
-                role_name = "weekdays_night"
-            case "🔵":
-                role_name = "weekend_morning"
-            case "🟣":
-                role_name = "weekend_midday"
-            case "🟤":
-                role_name = "weekend_evening"
-            case "⚪":
-                role_name = "weekend_night"
-            case "⚫":
-                role_name = "dogfight_only"
-            case "1️⃣":
-                role_name = "+1"
-            case "2️⃣":
-                role_name = "+2"
+        if payload.emoji.name == "🔴":
+            role_name = "weekdays_morning"
+        elif payload.emoji.name == "🟠":
+            role_name = "weekdays_midday"
+        elif payload.emoji.name == "🟡":
+            role_name = "weekdays_evening"
+        elif payload.emoji.name == "🟢":
+            role_name = "weekdays_night"
+        elif payload.emoji.name == "🔵":
+            role_name = "weekend_morning"
+        elif payload.emoji.name == "🟣":
+            role_name = "weekend_midday"
+        elif payload.emoji.name == "🟤":
+            role_name = "weekend_evening"
+        elif payload.emoji.name == "⚪":
+            role_name = "weekend_night"
+        elif payload.emoji.name == "⚫":
+            role_name = "dogfight_only"
+        elif payload.emoji.name == "1️⃣":
+            role_name = "+1"
+        elif payload.emoji.name == "2️⃣":
+            role_name = "+2"
 
 
 
@@ -345,29 +344,28 @@ async def on_raw_reaction_remove(payload: discord.RawReactionActionEvent):
 
 
         role_name = None
-        match payload.emoji.name:
-            case "🔴":
-                role_name = "weekdays_morning"
-            case "🟠":
-                role_name = "weekdays_midday"
-            case "🟡":
-                role_name = "weekdays_evening"
-            case "🟢":
-                role_name = "weekdays_night"
-            case "🔵":
-                role_name = "weekend_morning"
-            case "🟣":
-                role_name = "weekend_midday"
-            case "🟤":
-                role_name = "weekend_evening"
-            case "⚪":
-                role_name = "weekend_night"
-            case "⚫":
-                role_name = "dogfight_only"
-            case "1️⃣":
-                role_name = "+1"
-            case "2️⃣":
-                role_name = "+2"
+        if payload.emoji.name == "🔴":
+            role_name = "weekdays_morning"
+        elif payload.emoji.name == "🟠":
+            role_name = "weekdays_midday"
+        elif payload.emoji.name == "🟡":
+            role_name = "weekdays_evening"
+        elif payload.emoji.name == "🟢":
+            role_name = "weekdays_night"
+        elif payload.emoji.name == "🔵":
+            role_name = "weekend_morning"
+        elif payload.emoji.name == "🟣":
+            role_name = "weekend_midday"
+        elif payload.emoji.name == "🟤":
+            role_name = "weekend_evening"
+        elif payload.emoji.name == "⚪":
+            role_name = "weekend_night"
+        elif payload.emoji.name == "⚫":
+            role_name = "dogfight_only"
+        elif payload.emoji.name == "1️⃣":
+            role_name = "+1"
+        elif payload.emoji.name == "2️⃣":
+            role_name = "+2"
 
 
 
