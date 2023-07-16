@@ -5,6 +5,8 @@ import  os
 import random
 import praw
 import asyncpraw
+import datetime
+import time
 
 import discord
 from  dotenv import load_dotenv
@@ -396,10 +398,14 @@ async def on_raw_reaction_remove(payload: discord.RawReactionActionEvent):
 
 @bot.command()
 async def boosting(ctx, message=''):
-    boosttype = message.split(",",0)
-    boostdate = message.split(",",1)
-    boosttime = message.split(",",2)
-    await ctx.send('@everyone ' + boosttype + boostdate + boosttime)
+    if ctx.guild.id != 1120611898937847881: 
+        await ctx.send("You're not on the right server")
+    else:
+        channel = bot.get_channel(1128569303776636968)
+        boosttype = message.split(",")[0]
+        boostdate = message.split(",")[1]
+        boosttime = message.split(",")[2]
+        await channel.send('@everyone ' + str(boosttype) + ', ' + str(boostdate) + ', ' + str(boosttime)+ " o'clock")
     
 
 
