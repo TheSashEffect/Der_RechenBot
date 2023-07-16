@@ -405,7 +405,7 @@ async def boosting(ctx, message=''):
         boosttype = message.split(",")[0]
         boostdate = message.split(",")[1]
         boosttime = message.split(",")[2]
-        await channel.send('@everyone ' + str(boosttype) + ', ' + str(boostdate) + ', ' + str(boosttime)+ " o'clock")
+        await channel.send('@everyone ' + str(boosttype) + ', ' + str(boostdate) + ', ' + str(boosttime)+ " o'clock UTC+0")
     
 
 
