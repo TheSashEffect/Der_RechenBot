@@ -51,7 +51,7 @@ intents = discord.Intents().all()
 
 
 
-#erstens fur allgemein bot und das der groß-kleinschreibung ignoriert, command braucht ! davor und intents=intents
+#erstens fur allgemein bot und das der grosz-kleinschreibung ignoriert, command braucht ! davor und intents=intents
 bot = commands.Bot(case_insensitive=True, command_prefix='!', intents=intents, activity=discord.Streaming(name="for the people who are watching", url='https://www.twitch.tv/the_sash_effect'))
 
 
@@ -95,7 +95,7 @@ async def on_message(message):
     
     
     
-    #wenn balls in nachricht, so oft emote machen wie balls in Nachricht und groß klein egal
+    #wenn balls in nachricht, so oft emote machen wie balls in Nachricht und grosz klein egal
     if 'balls' in message.content.lower():
         await message.channel.send(message.content.lower().count('balls') * "<:balls:1122153712840871996>")
     
@@ -143,7 +143,7 @@ async def spruch(ctx):
 
 
 
-#wenn !f großes F aus emotes
+#wenn !f groszes F aus emotes
 @bot.command()
 async def f(ctx):
     response = '<:balls:1122153712840871996>'
@@ -183,7 +183,7 @@ async def post(ctx, message=''):
             
             
             
-    #warten, das reddit sich schließt (kein Plan wieso)        
+    #warten, das reddit sich schlieszt (kein Plan wieso)        
     await reddit.close()
 
 
@@ -199,7 +199,7 @@ async def info(ctx,user:discord.Member=None):
     
         
         
-    #liste fuer rolen eines Users außer @everyone    
+    #liste fuer rolen eines Users auszer @everyone    
     rlist = []
     for role in user.roles:
         if role.name != '@everyone':
