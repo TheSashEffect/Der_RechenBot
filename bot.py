@@ -19,7 +19,7 @@ with open('./yogi_tea_quotes.txt', encoding='utf-8') as f:
 
 
 
-#öffnet guildliste datei bei start von bot
+#oeffnet guildliste datei bei start von bot
 with open('./guildliste.txt', encoding='utf-8') as f:
     guildliste = f.read().split('|')
 
@@ -27,13 +27,13 @@ with open('./guildliste.txt', encoding='utf-8') as f:
 
 
 
-#lädt .env datei wegen sicherheit und so
+#laedt .env datei wegen sicherheit und so
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
 
 
 
-#Zugangsdaten für Reddit damit der Bot posts holen kann        
+#Zugangsdaten fur Reddit damit der Bot posts holen kann        
 reddit = praw.Reddit(client_id='aRrwturDzMingtn95Mmbvw',
                      client_secret='JlgeXUfvBEeYVkE5pZG4-ipc7dSb5Q',
                      password='ErTzUi123456',
@@ -51,7 +51,7 @@ intents = discord.Intents().all()
 
 
 
-#erstens für allgemein bot und das der groß-kleinschreibung ignoriert, command braucht ! davor und intents=intents
+#erstens fur allgemein bot und das der groß-kleinschreibung ignoriert, command braucht ! davor und intents=intents
 bot = commands.Bot(case_insensitive=True, command_prefix='!', intents=intents, activity=discord.Streaming(name="for the people who are watching", url='https://www.twitch.tv/the_sash_effect'))
 
 
@@ -193,13 +193,13 @@ async def post(ctx, message=''):
 #wenn !info dann infos zu User ausgeben
 @bot.command(name='info')
 async def info(ctx,user:discord.Member=None):
-    #wenn kein user erwähnt, dann man sender
+    #wenn kein user erwaehnt, dann man sender
     if user==None:
         user=ctx.author
     
         
         
-    #liste für rolen eines Users außer @everyone    
+    #liste fuer rolen eines Users außer @everyone    
     rlist = []
     for role in user.roles:
         if role.name != '@everyone':
@@ -213,31 +213,31 @@ async def info(ctx,user:discord.Member=None):
     
     
     
-    #einfügen Infos von wenn, Avatar und von wem    
+    #einfuegen Infos von wenn, Avatar und von wem    
     embed.set_author(name=f'User Info for: {user}' ),
     embed.set_thumbnail(url=user.avatar),
     embed.set_footer(text=f'Requested by: {user}',icon_url=ctx.author.avatar)
     
     
     
-    #einfügen von name und Id des requesteten, inline = Zeilensprung damit besser sichtbar   
+    #einfuegen von name und Id des requesteten, inline = Zeilensprung damit besser sichtbar   
     embed.add_field(name='ID:',value=user.id,inline=False)
     embed.add_field(name='Name:',value = user.display_name,inline=False)
 
 
 
-    #einfügen, wann account erstellt und seit wann aufm server
+    #einfuegen, wann account erstellt und seit wann aufm server
     embed.add_field(name='Created at:',value = user.created_at,inline=False)
     embed.add_field(name='Joined at:',value = user.joined_at,inline=False)
     
     
     
-    #einfügen, ob user ein bot ist
+    #einfuegen, ob user ein bot ist
     embed.add_field(name='Bot?',value=user.bot,inline=False)
     
     
     
-    #einfügen, was für rolen user hat und was top role ist
+    #einfuegen, was fuer rolen user hat und was top role ist
     embed.add_field(name=f'Roles: ({len(rlist)})',value=''.join([b]),inline=False)
     embed.add_field(name='Top Role:',value=user.top_role.mention,inline=False)
     
