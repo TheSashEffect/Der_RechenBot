@@ -395,10 +395,10 @@ async def on_raw_reaction_remove(payload: discord.RawReactionActionEvent):
 
 
 @bot.command()
-async def boosting(ctx):
-    boosttype = ctx.split(",",0)
-    boostdate = ctx.split(",",1)
-    boosttime = ctx.split(",",2)
+async def boosting(ctx, message=''):
+    boosttype = message.split(",",0)
+    boostdate = message.split(",",1)
+    boosttime = message.split(",",2)
     await ctx.send('@everyone ' + boosttype + boostdate + boosttime)
     
 
