@@ -262,7 +262,7 @@ async def on_command_error(ctx, error):
 
 
 #wenn auf eine nachricht reagiert wird, rolen zuweisen
-@bot.event
+"""@bot.event
 async def on_raw_reaction_add(payload):
     message_id = payload.message_id
     
@@ -392,7 +392,7 @@ async def on_raw_reaction_remove(payload: discord.RawReactionActionEvent):
         
         
         else:
-            print("Role not found . . .")    
+            print("Role not found . . .")"""    
 
 
 
