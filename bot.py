@@ -117,7 +117,7 @@ async def on_message(message):
 
 
 #wenn !happy_birthday, dann ...
-@bot.command()
+@bot.command(help = "Happy birthday dear person.")
 async def happy_birthday(ctx):
     response = 'Happy Birthday! 🎈🎉'
     await ctx.send(response)
@@ -127,7 +127,7 @@ async def happy_birthday(ctx):
 
 
 #wenn !hello, dann ...
-@bot.command()
+@bot.command(help = "Say Hello to yourself.")
 async def hello(ctx):
     await ctx.send('Hello {0.display_name}.'.format(ctx.author))
 
@@ -136,7 +136,7 @@ async def hello(ctx):
 
 
 #wenn spruch, random spruch aus liste
-@bot.command()
+@bot.command(help = "Get an motivating quote. But it's in german.")
 async def spruch(ctx):
     response = random.choice(yogi_tea_quotes)
     await ctx.send(response)
@@ -146,7 +146,7 @@ async def spruch(ctx):
 
 
 #wenn !f groszes F aus emotes
-@bot.command(help = "test")
+@bot.command(help = "Press F to pay respect.")
 async def f(ctx):
     response = '<:balls:1122153712840871996>'
     await ctx.send(4 * response + '\n' + response + '\n' + 2 * response + '\n' + response + '\n' + response)
@@ -156,7 +156,7 @@ async def f(ctx):
 
 
 #wenn !post post von reddit schicken
-@bot.command()
+@bot.command(help = "Get an random Reddit post. If you don't add any Subreddit, you'll get a random meme.")
 async def post(ctx, message=''):
     #wenn keine kategorie, random aus memes
     if message == '':
@@ -193,7 +193,7 @@ async def post(ctx, message=''):
 
 
 #wenn !info dann infos zu User ausgeben
-@bot.command(name='info')
+@bot.command(name='info', help = "Get the Discord information from a user. If you don't add any user, you'll get your own informations.")
 async def info(ctx,user:discord.Member=None):
     #wenn kein user erwaehnt, dann man sender
     if user==None:
