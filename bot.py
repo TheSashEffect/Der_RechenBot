@@ -396,7 +396,7 @@ async def on_raw_reaction_remove(payload: discord.RawReactionActionEvent):
 
 
 
-@bot.command()
+@bot.command(help = "Create a boosting session. You'll have to add a short description of what you want to boost, when and what you're current timezone is.")
 async def boosting(ctx, *, message=''):
     if ctx.guild.id != 1120611898937847881:
     #if ctx.guild.id == 1120611898937847881: 
