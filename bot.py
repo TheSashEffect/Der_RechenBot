@@ -117,7 +117,7 @@ async def on_message(message):
 
 
 #wenn !happy_birthday, dann ...
-@bot.command(help = "Happy birthday dear person.")
+@bot.command()
 async def happy_birthday(ctx):
     response = 'Happy Birthday! 🎈🎉'
     await ctx.send(response)
@@ -127,7 +127,7 @@ async def happy_birthday(ctx):
 
 
 #wenn !hello, dann ...
-@bot.command(help = "Say Hello to yourself.")
+@bot.command()
 async def hello(ctx):
     await ctx.send('Hello {0.display_name}.'.format(ctx.author))
 
@@ -136,7 +136,7 @@ async def hello(ctx):
 
 
 #wenn spruch, random spruch aus liste
-@bot.command(help = "Get an motivating quote. But it's in german.")
+@bot.command()
 async def spruch(ctx):
     response = random.choice(yogi_tea_quotes)
     await ctx.send(response)
@@ -146,7 +146,7 @@ async def spruch(ctx):
 
 
 #wenn !f groszes F aus emotes
-@bot.command(help = "Press F to pay respect.")
+@bot.command()
 async def f(ctx):
     response = '<:balls:1122153712840871996>'
     await ctx.send(4 * response + '\n' + response + '\n' + 2 * response + '\n' + response + '\n' + response)
@@ -156,7 +156,7 @@ async def f(ctx):
 
 
 #wenn !post post von reddit schicken
-@bot.command(help = "Get an random Reddit post. If you don't add any Subreddit, you'll get a random meme.")
+@bot.command()
 async def post(ctx, message=''):
     #wenn keine kategorie, random aus memes
     if message == '':
@@ -193,7 +193,7 @@ async def post(ctx, message=''):
 
 
 #wenn !info dann infos zu User ausgeben
-@bot.command(name='info', help = "Get the Discord information from a user. If you don't add any user, you'll get your own informations.")
+@bot.command(name='info')
 async def info(ctx,user:discord.Member=None):
     #wenn kein user erwaehnt, dann man sender
     if user==None:
@@ -396,7 +396,7 @@ async def on_raw_reaction_remove(payload: discord.RawReactionActionEvent):
 
 
 
-@bot.command(help = "Create a boosting session. You'll have to add a short description of what you want to boost, when and what you're current timezone is.")
+@bot.command()
 async def boosting(ctx, *, message=''):
     if ctx.guild.id != 1120611898937847881: 
         await ctx.send("You're not on the right server")
@@ -452,6 +452,52 @@ async def help_boosting(ctx: commands.Context):
             e.g.: 17.07.2023 16:00 \n The current timezone in +-n depending on the timezone you're in. \n
             For instance: !boosting dogfight kills, 17.07.2023 16:00, +2"""
         ))
+    
+@bot.command()
+async def help_f(ctx: commands.Context):
+    await ctx.send(embed = discord.Embed(
+            title="f", 
+            description="Press F to pay respect."
+        ))
+    
+@bot.command()
+async def help_happy_birthday(ctx: commands.Context):
+    await ctx.send(embed = discord.Embed(
+            title="happy_birthday", 
+            description="If anyone has birthday, why don't you congratulate him."
+        ))
+    
+@bot.command()
+async def help_hello(ctx: commands.Context):
+    await ctx.send(embed = discord.Embed(
+            title="hello", 
+            description="If you feel lonely, there is still one person who will respond to you immediately."
+        ))
+    
+@bot.command()
+async def help_info(ctx: commands.Context):
+    await ctx.send(embed = discord.Embed(
+            title="info \{person (optional\}", 
+            description="""If you wan't to get someones Discord informations, just use this command.
+            But when you don't add a user, your informations will be published."""
+        ))
+    
+@bot.command()
+async def help_post(ctx: commands.Context):
+    await ctx.send(embed = discord.Embed(
+            title="post \{subreddit (optional)\}", 
+            description="""Gives you a random Reddit post from the Subreddit you added. 
+            If you haven't added a Subreddit, you'll get a random meme."""
+        ))
+    
+@bot.command()
+async def help_spruch(ctx: commands.Context):
+    await ctx.send(embed = discord.Embed(
+            title="spruch", 
+            description="Get an motivating quote. But it's in german."
+        ))
+    
+
     
 
 
