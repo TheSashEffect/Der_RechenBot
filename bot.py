@@ -422,7 +422,29 @@ async def boosting(ctx, *, message=''):
         print(UTC)
         
         await channel.send('@everyone, ' + boosttype + ' <t:' + str(int(UTC + timezone * 3600)) + ':R>, <t:' + str(int(UTC + timezone * 3600)) + ':F>')
-        #await channel.send('@everyone ' + str(boosttype) + ', <t:' + str(int(UTC + float(timezone) * 3600)) + ':R>, <t:' + str(int(UTC + float(timezone) * 3600)) + ':F>')
+        
+        
+    @bot.command()
+    async def help(ctx: commands.Context):
+        bot = ctx.guild.get_member(bot.user.id)
+        embed = discord.Embed(
+            title = f'{bot.display_name} - commands',
+            description = f'For detailed explanations use\n{bot.command_prefix}help {{command}}'
+        )
+        embed.set_thumbnail(url=bot.display_avatar)
+        embed.add_field(
+            name = "Commands:", 
+            value = f'''
+            boosting
+            f
+            happy_birthday
+            hello
+            info
+            post
+            spruch
+            '''
+        )
+        await ctx.send(embed = embed)
     
 
 
