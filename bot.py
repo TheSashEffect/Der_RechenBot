@@ -445,6 +445,7 @@ async def help(ctx: commands.Context):
         happy_birthday
         hello
         info
+        ping
         post
         spruch
         '''
@@ -487,6 +488,13 @@ async def help_info(ctx: commands.Context):
             title="info \{person (optional\}", 
             description="""If you wan't to get someones Discord informations, just use this command.
             But when you don't add a user, your informations will be published."""
+        ))
+ 
+@bot.command()
+async def help_ping(ctx: commands.Context):
+    await ctx.send(embed = discord.Embed(
+            title="ping", 
+            description="When you want to play ping-pong... and to figure out the response time from the server."
         ))
     
 @bot.command()
