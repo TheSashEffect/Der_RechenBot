@@ -11,6 +11,7 @@ import string
 import re
 import asyncio
 import aiohttp
+import subprocess
 
 import discord
 from  dotenv import load_dotenv
@@ -460,6 +461,13 @@ async def emote(ctx: commands.Context, *, query: str = ""):
     await mySevenTvSession.close() 
 
         
+        
+@bot.command()
+async def temp(ctx):
+    await ctx.send(subprocess.run(["vcgencmd", "measure_temp"], stdout=subprocess.PIPE).stdout.decode("utf-8").strip())
+
+
+
         
 @bot.command()
 async def help(ctx: commands.Context):
