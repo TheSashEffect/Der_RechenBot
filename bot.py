@@ -105,16 +105,16 @@ async def on_message(message):
     
     
     if message.author.id in (769525682039947314,):
-        await message.channel.send("<:jaessin:1130576347887050812>")
+        await message.channel.send("<:jaessin:1130579348018176180>")
         
     if 'jässin' in message.content.lower():
-        await message.channel.send("<:jaessin:1130576347887050812>")
+        await message.channel.send("<:jaessin:1130579348018176180>")
         
     if 'jaessin' in message.content.lower():
-        await message.channel.send("<:jaessin:1130576347887050812>")
+        await message.channel.send("<:jaessin:1130579348018176180>")
     
     if 'jassin' in message.content.lower():
-        await message.channel.send("<:jaessin:1130576347887050812>")
+        await message.channel.send("<:jaessin:1130579348018176180>")
     
     
     
