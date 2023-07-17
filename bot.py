@@ -108,13 +108,13 @@ async def on_message(message):
         await message.channel.send("<:jaessin:1130580133942661352>")
         
     if 'jässin' in message.content.lower():
-        await message.channel.send("<:jaessin:1130580133942661352>")
+        await message.channel.send(message.content.lower().count('jässin') * "<:jaessin:1130580133942661352>")
         
     if 'jaessin' in message.content.lower():
-        await message.channel.send("<:jaessin:1130580133942661352>")
+        await message.channel.send(message.content.lower().count('jaessin') * "<:jaessin:1130580133942661352>")
     
     if 'jassin' in message.content.lower():
-        await message.channel.send("<:jaessin:1130580133942661352>")
+        await message.channel.send(message.content.lower().count('jassin') * "<:jaessin:1130580133942661352>")
     
     
     
