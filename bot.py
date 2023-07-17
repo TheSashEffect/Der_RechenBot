@@ -425,7 +425,7 @@ async def boosting(ctx, *, message=''):
         
         
     @bot.command()
-    async def help(ctx: commands.Context):
+    async def help(ctx: bot.Context):
         bot = ctx.guild.get_member(bot.user.id)
         embed = discord.Embed(
             title = f'{bot.display_name} - commands',
