@@ -104,6 +104,21 @@ async def on_message(message):
     
     
     
+    if message.author.id in (769525682039947314,):
+        await message.channel.send("<:jaessin:1130576347887050812>")
+        
+    if 'jässin' in message.content.lower():
+        await message.channel.send("<:jaessin:1130576347887050812>")
+        
+    if 'jaessin' in message.content.lower():
+        await message.channel.send("<:jaessin:1130576347887050812>")
+    
+    if 'jassin' in message.content.lower():
+        await message.channel.send("<:jaessin:1130576347887050812>")
+    
+    
+    
+    
     #wenn balls in nachricht, so oft emote machen wie balls in Nachricht und grosz klein egal
     if 'balls' in message.content.lower():
         await message.channel.send(message.content.lower().count('balls') * "<:balls:1122153712840871996>")
