@@ -397,15 +397,33 @@ async def on_raw_reaction_remove(payload: discord.RawReactionActionEvent):
 
 
 @bot.command()
-async def boosting(ctx, message=''):
-    if ctx.guild.id != 1120611898937847881: 
+async def boosting(ctx, *, message=''):
+    #if ctx.guild.id != 1120611898937847881:
+    if ctx.guild.id == 1120611898937847881: 
         await ctx.send("You're not on the right server")
     else:
-        channel = bot.get_channel(1120778128005005312)
-        boosttype = message.split(",")[0]
-        boostdate = message.split(",")[1]
-        boosttime = message.split(",")[2]
-        await channel.send('@everyone ' + str(boosttype) + ', ' + str(boostdate) + ', ' + str(boosttime)+ " o'clock UTC+0")
+        #channel = bot.get_channel(1120778128005005312)
+        channel = bot.get_channel(1118468123251712022)
+        boosttype = message.split(", ")[0]
+        boostdate = message.split(", ")[1]
+        #boosttime = message.split(",")[2]
+        timezone = float(message.split(", ")[2])
+        
+        if timezone < 0:
+            timezone = abs(timezone) + 2            
+            
+        elif timezone > 0:
+            timezone = 0 - (timezone * 2 - (timezone + 2))
+            
+        else:
+            timezone = timezone + 2
+            
+        
+        UTC = int(datetime.datetime.strptime(boostdate, '%d.%m.%Y %H:%M').timestamp())
+        print(UTC)
+        
+        await channel.send('@everyone, ' + boosttype + ' <t:' + str(int(UTC + timezone * 3600)) + ':R>, <t:' + str(int(UTC + timezone * 3600)) + ':F>')
+        #await channel.send('@everyone ' + str(boosttype) + ', <t:' + str(int(UTC + float(timezone) * 3600)) + ':R>, <t:' + str(int(UTC + float(timezone) * 3600)) + ':F>')
     
 
 
