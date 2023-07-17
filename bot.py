@@ -483,6 +483,7 @@ async def help(ctx: commands.Context):
         name = "Commands:", 
         value = f'''
         boosting
+        emote
         f
         happy_birthday
         hello
@@ -490,18 +491,12 @@ async def help(ctx: commands.Context):
         ping
         post
         spruch
+        temp
         '''
     )
     await ctx.send(embed = embed)
     
-@bot.command()
-async def help_boosting(ctx: commands.Context):
-    await ctx.send(embed = discord.Embed(
-            title="boosting \{type of boosting\}, \{boosting date and time\}, \{your current time zone\}", 
-            description="""Creates a boosting session. \n Boosting date and time format: dd.mm.yyyy HH:MM 
-            e.g.: 17.07.2023 16:00 \n The current timezone in +-n depending on the timezone you're in. \n
-            For instance: !boosting dogfight kills, 17.07.2023 16:00, +2"""
-        ))
+
     
 @bot.command()
 async def help_f(ctx: commands.Context):
@@ -510,6 +505,14 @@ async def help_f(ctx: commands.Context):
             description="Press F to pay respect."
         ))
     
+@bot.command()
+async def help_emote(ctx: commands.Context):
+    await ctx.send(embed = discord.Embed(
+            title="emote \{emotename (optional)\}", 
+            description="""Sends you the 7tv emote for the emote you search. 
+            If you don't add an emote, you'll get a random one."""
+        ))
+
 @bot.command()
 async def help_happy_birthday(ctx: commands.Context):
     await ctx.send(embed = discord.Embed(
@@ -552,6 +555,14 @@ async def help_spruch(ctx: commands.Context):
     await ctx.send(embed = discord.Embed(
             title="spruch", 
             description="Get an motivating quote. But it's in german."
+        ))
+    
+@bot.command()
+async def help_temp(ctx: commands.Context):
+    await ctx.send(embed = discord.Embed(
+            title="temp", 
+            description="""Goves you the current server temperature.
+            But why do you try it? Because you probably don't have access to the command"""
         ))
     
 
