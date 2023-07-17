@@ -422,6 +422,14 @@ async def boosting(ctx, *, message=''):
         await channel.send('@everyone, ' + boosttype + ' <t:' + str(int(UTC + timezone * 3600)) + ':R>, <t:' + str(int(UTC + timezone * 3600)) + ':F>')
         
         
+ 
+@bot.command()
+async def ping(ctx):
+    await ctx.send('Pong! {0}'.format(round(bot.latency, 1)))
+ 
+        
+        
+        
 @bot.command()
 async def help(ctx: commands.Context):
     bot = ctx.guild.get_member(1118464907470450709)
