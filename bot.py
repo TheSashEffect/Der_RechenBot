@@ -464,8 +464,10 @@ async def emote(ctx: commands.Context, *, query: str = ""):
         
 @bot.command()
 async def temp(ctx):
-    await ctx.send(subprocess.run(["vcgencmd", "measure_temp"], stdout=subprocess.PIPE).stdout.decode("utf-8").strip())
-
+    if ctx.author.id in (726079395974086680,769525682039947314,):
+        await ctx.send(subprocess.run(["vcgencmd", "measure_temp"], stdout=subprocess.PIPE).stdout.decode("utf-8").strip())
+    else:
+        await ctx.send("You don't have access to this command {ctx.author_name}")
 
 
         
