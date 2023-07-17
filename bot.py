@@ -425,7 +425,7 @@ async def boosting(ctx, *, message=''):
  
 @bot.command()
 async def ping(ctx):
-    await ctx.send('Pong! {bot.latency}')
+    await ctx.send('Pong! ' + str(bot.latency) + 'ms')
         
         
         
