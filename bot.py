@@ -54,7 +54,7 @@ intents = discord.Intents().all()
 
 
 #erstens fur allgemein bot und das der grosz-kleinschreibung ignoriert, command braucht ! davor und intents=intents
-bot = commands.Bot(case_insensitive=True, command_prefix='!', intents=intents, activity=discord.Streaming(name="for the people who are watching", url='https://www.twitch.tv/the_sash_effect'))
+bot = commands.Bot(case_insensitive=True, command_prefix='!', intents=intents, activity=discord.Streaming(name="for the people who are watching", url='https://www.twitch.tv/the_sash_effect'), help_command = None)
 
 
         
@@ -398,12 +398,10 @@ async def on_raw_reaction_remove(payload: discord.RawReactionActionEvent):
 
 @bot.command(help = "Create a boosting session. You'll have to add a short description of what you want to boost, when and what you're current timezone is.")
 async def boosting(ctx, *, message=''):
-    if ctx.guild.id != 1120611898937847881:
-    #if ctx.guild.id == 1120611898937847881: 
+    if ctx.guild.id != 1120611898937847881: 
         await ctx.send("You're not on the right server")
     else:
         channel = bot.get_channel(1120778128005005312)
-        #channel = bot.get_channel(1118468123251712022)
         boosttype = message.split(", ")[0]
         boostdate = message.split(", ")[1]
         timezone = float(message.split(", ")[2])
@@ -424,27 +422,36 @@ async def boosting(ctx, *, message=''):
         await channel.send('@everyone, ' + boosttype + ' <t:' + str(int(UTC + timezone * 3600)) + ':R>, <t:' + str(int(UTC + timezone * 3600)) + ':F>')
         
         
-    @bot.command()
-    async def help(ctx: bot.Context):
-        bot = ctx.guild.get_member(bot.user.id)
-        embed = discord.Embed(
-            title = f'{bot.display_name} - commands',
-            description = f'For detailed explanations use\n{bot.command_prefix}help {{command}}'
-        )
-        embed.set_thumbnail(url=bot.display_avatar)
-        embed.add_field(
-            name = "Commands:", 
-            value = f'''
-            boosting
-            f
-            happy_birthday
-            hello
-            info
-            post
-            spruch
-            '''
-        )
-        await ctx.send(embed = embed)
+@bot.command()
+async def help(ctx: commands.Context):
+    bot = ctx.guild.get_member(1118464907470450709)
+    embed = discord.Embed(
+        title = f'{bot.display_name} - commands',
+        description = f'For detailed explanations use\n !help_{{command}}'
+    )
+    embed.set_thumbnail(url=bot.display_avatar)
+    embed.add_field(
+        name = "Commands:", 
+        value = f'''
+        boosting
+        f
+        happy_birthday
+        hello
+        info
+        post
+        spruch
+        '''
+    )
+    await ctx.send(embed = embed)
+    
+@bot.command()
+async def help_boosting(ctx: commands.Context):
+    await ctx.send(embed = discord.Embed(
+            title="boosting \{type of boosting\}, \{boosting date and time\}, \{your current time zone\}", 
+            description="""Creates a boosting session. \n Boosting date and time format: dd.mm.yyyy HH:MM 
+            e.g.: 17.07.2023 16:00 \n The current timezone in +-n depending on the timezone you're in. \n
+            For instance: !boosting dogfight kills, 17.07.2023 16:00, +2"""
+        ))
     
 
 
