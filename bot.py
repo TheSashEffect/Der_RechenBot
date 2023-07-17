@@ -7,12 +7,18 @@ import praw
 import asyncpraw
 import datetime
 import time
+import string
+import re
+import asyncio
+import aiohttp
 
 import discord
 from  dotenv import load_dotenv
 from discord.utils import get
 from discord.ext import commands
 
+import seventv
+from seventv.seventv import seventvException
 
 
 #oeffnet yogi tea quotes datei bei start von bot
@@ -428,6 +434,31 @@ async def boosting(ctx, *, message=''):
 async def ping(ctx):
     await ctx.send('Pong! ' + str(bot.latency) + 'ms')
         
+
+
+@bot.command()
+async def emote(ctx: commands.Context, *, query: str = ""):
+    httpSession = aiohttp.ClientSession()
+    mySevenTvSession = seventv.seventv()
+    limit = 100 if not query else 20
+    if not query: query = random.choice(string.ascii_letters)
+    try:
+        data = await mySevenTvSession.emote_search(query, limit, query="url")        
+    except seventvException	as error:
+        await ctx.send("https://cdn.7tv.app/emote/6250b5ea2667140c8cedd1e9/2x.gif")
+        return await ctx.send(embed = discord.Embed(description=re.sub(r'\d+', '', str(error)), color=ctx.author.color))
+    if not data:
+        await ctx.send("https://cdn.7tv.app/emote/60abf171870d317bef23d399/2x.gif")
+        return await ctx.send(embed = discord.Embed(description="I didn't find any emotes", color=ctx.author.color))
+    url = f'https:{random.choice(data).host_url}'
+    """async with httpSession.get(f'{url}/2x.gif') as response:
+        if response.status != 200:
+            return await ctx.send(f'{url}/2x.png')
+        await ctx.send(f'{url}/2x.gif')"""
+    await ctx.send(f'{url}/2x.gif')
+        
+    await mySevenTvSession.close() 
+
         
         
 @bot.command()
