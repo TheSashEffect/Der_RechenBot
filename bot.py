@@ -88,13 +88,7 @@ async def on_message(message):
     #wenn sender dieser bot ist nicht nochmal senden
     if message.author == bot.user:
         return
-    
-    
-    
-    if message.channel.id == 1120778128005005312:
-        await message.add_reaction("1️⃣")
-        await message.add_reaction("2️⃣")
-    
+        
     
     
     #wenn sender ein anderer bot ist, nicht nochmal senden
@@ -426,7 +420,8 @@ async def boosting(ctx, *, message=''):
         print(UTC)
         
         await channel.send('@everyone, ' + boosttype + ' <t:' + str(int(UTC + timezone * 3600)) + ':R>, <t:' + str(int(UTC + timezone * 3600)) + ':F>')
-        
+        await message.add_reaction("1️⃣")
+        await message.add_reaction("2️⃣")
         
  
 @bot.command()
