@@ -91,6 +91,12 @@ async def on_message(message):
     
     
     
+    if message.channel.id == 1120778128005005312:
+        await message.add_reaction("1️⃣")
+        await message.add_reaction("2️⃣")
+    
+    
+    
     #wenn sender ein anderer bot ist, nicht nochmal senden
     if message.author.id in (1063806186048192532,1122866223185662124,):
         return
