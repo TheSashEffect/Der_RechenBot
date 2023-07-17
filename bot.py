@@ -105,16 +105,20 @@ async def on_message(message):
     
     
     if message.author.id in (769525682039947314,):
-        await message.channel.send("<:jaessin:1130580133942661352>")
+        channel = bot.get_channel(1130587241417277503)
+        await channel.send("<:jaessin:1130580133942661352>")
         
     if 'jässin' in message.content.lower():
-        await message.channel.send(message.content.lower().count('jässin') * "<:jaessin:1130580133942661352>")
+        channel = bot.get_channel(1130587241417277503)
+        await channel.send(message.content.lower().count('jässin') * "<:jaessin:1130580133942661352>")
         
     if 'jaessin' in message.content.lower():
-        await message.channel.send(message.content.lower().count('jaessin') * "<:jaessin:1130580133942661352>")
+        channel = bot.get_channel(1130587241417277503)
+        await channel.send(message.content.lower().count('jaessin') * "<:jaessin:1130580133942661352>")
     
     if 'jassin' in message.content.lower():
-        await message.channel.send(message.content.lower().count('jassin') * "<:jaessin:1130580133942661352>")
+        channel = bot.get_channel(1130587241417277503)
+        await channel.send(message.content.lower().count('jassin') * "<:jaessin:1130580133942661352>")
     
     
     
