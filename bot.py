@@ -407,13 +407,13 @@ async def boosting(ctx, *, message=''):
         timezone = float(message.split(", ")[2])
         
         if timezone < 0:
-            timezone = abs(timezone) + 2            
+            timezone = abs(timezone) + 2 -1           
             
         elif timezone > 0:
-            timezone = 0 - (timezone * 2 - (timezone + 2))
+            timezone = 0 - (timezone * 2 - (timezone + 2)) -1
             
         else:
-            timezone = timezone + 2
+            timezone = timezone + 2 -1
             
         
         UTC = int(datetime.datetime.strptime(boostdate, '%d.%m.%Y %H:%M').timestamp())
