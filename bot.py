@@ -561,7 +561,7 @@ async def help_spruch(ctx: commands.Context):
 async def help_temp(ctx: commands.Context):
     await ctx.send(embed = discord.Embed(
             title="temp", 
-            description="""Goves you the current server temperature.
+            description="""Gives you the current server temperature.
             But why do you try it? Because you probably don't have access to the command"""
         ))
     
