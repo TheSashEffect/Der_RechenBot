@@ -92,6 +92,16 @@ async def on_member_join(member):
 @bot.event
 async def on_message(message):
     
+    if message.author.id != (1118464907470450709):
+        channel = bot.get_channel(1130843895887048785)
+        embed = discord.Embed(
+        title = f"{message.author.display_name}'s message in {message.guild}; Channel: {message.channel.name}",
+        description = message.content)
+        
+        await channel.send(embed = embed)
+    
+    
+    
     #wenn sender dieser bot ist nicht nochmal senden
     if message.author == bot.user:
         return
