@@ -518,8 +518,7 @@ async def temp(ctx):
 
 
 @bot.command(name='download', help='Download a file and save it to the Raspberry Pi')
-async def download(ctx, file_url: str):
-    # Check if the command is used in a server (guild)
+async def download(ctx, file_url):
     if ctx.author.id in (726079395974086680):
         # Get the author of the message (user who sent the command)
         author = ctx.message.author
