@@ -523,39 +523,15 @@ async def download(ctx, file_url: str):
         # Specify the directory where the file will be saved
         save_directory = '/mnt/drive/download'
 
-        # Extract the filename from the URL using the last part of the path
-        #filename = os.path.basename(file_url)
-
-        # Combine the directory and filename to create the full path
-        #full_path = os.path.join(save_directory, filename)
-
-        """try:
-            # Download the file from the provided URL
-            response = requests.get(file_url)
-
-            # Ensure that the response status code is 200 (OK)
-            if response.status_code == 200:
-                with open(full_path, 'wb') as file:
-                    file.write(response.content)
-                # Send a message indicating success
-                await ctx.send(f'The file has been successfully downloaded and saved as `{filename}`.')
-            else:
-                # If the response status code is not 200, handle the error
-                await ctx.send(f'Failed to download the file. Server returned status code {response.status_code}.')
-"""
         try:
             
-            #await ctx.send(file_url)
-            #await ctx.send(filename)
-            #await ctx.send(full_path)
             # Download the file from the provided URL
             command = ["wget", file_url, "-P", save_directory]
             output = subprocess.run(["sudo", *command], capture_output=True, text=True)
-            #exec(f"sudo wget.download({file_url}, {full_path})")
-            #urllib.request.urlretrieve(file_url, full_path)
+
 
             # Send a message indicating success
-            await ctx.send(f'The file has been successfully downloaded and saved as `{output}`.')
+            await ctx.send(f'The file has been successfully downloaded and saved as `{save_directory}/{file_url}`.')
             
         except Exception as e:
             # Send a message indicating failure
