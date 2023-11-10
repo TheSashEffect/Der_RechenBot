@@ -75,7 +75,18 @@ async def on_ready():
     print(guildliste)
 
 
+@bot.event
+async def on_command_error(ctx, error):
+    # Check if the error is a command-related error
+    if isinstance(error, commands.CommandError):
+        # Get the error message
+        error_message = f"An error occurred: {type(error).__name__} - {str(error)}"
 
+        # Get the error channel
+        error_channel = bot.get_channel(int(1172493971298201642))
+
+        # Send the error message to the specified channel
+        await error_channel.send(error_message)
 
 
 #wenn jemand joined, dann dm mit herzlich willkommen
