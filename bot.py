@@ -523,8 +523,8 @@ async def download(ctx, file_url: str):
         # Specify the directory where the file will be saved
         save_directory = '/mnt/drive/download'
 
-        # Generate a unique filename based on the user ID and the original filename
-        filename = f'{author.id}_{file_url.split("/")[-1]}'
+        # Extract the filename from the URL using the last part of the path
+        filename = file_url.split("/")[-1].split("?")[0]
 
         # Combine the directory and filename to create the full path
         full_path = save_directory + filename
@@ -532,7 +532,7 @@ async def download(ctx, file_url: str):
         try:
             # Download the file from the provided URL
             response = requests.get(file_url)
-        
+
             # Ensure that the response status code is 200 (OK)
             if response.status_code == 200:
                 with open(full_path, 'wb') as file:
@@ -549,8 +549,7 @@ async def download(ctx, file_url: str):
 
     else:
         # Send a message if the command is used in a direct message (DM)
-        await ctx.send(f'This command can not be used by @{ctx.author.name}.')   
-    
+        await ctx.send(f'This command can not be used by @{ctx.author.name}.')
 
 
 
