@@ -1,7 +1,7 @@
 #bot.py
 
 #import stuff
-import  os
+import os
 import random
 import praw
 import asyncpraw
@@ -524,10 +524,10 @@ async def download(ctx, file_url: str):
         save_directory = '/mnt/drive/download'
 
         # Extract the filename from the URL using the last part of the path
-        filename = file_url.split("/")[-1].split("?")[0]
+        filename = os.path.basename(file_url)
 
         # Combine the directory and filename to create the full path
-        full_path = save_directory + filename
+        full_path = os.path.join(save_directory, filename)
 
         try:
             # Download the file from the provided URL
