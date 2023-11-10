@@ -524,10 +524,10 @@ async def download(ctx, file_url: str):
         save_directory = '/mnt/drive/download'
 
         # Extract the filename from the URL using the last part of the path
-        filename = os.path.basename(file_url)
+        #filename = os.path.basename(file_url)
 
         # Combine the directory and filename to create the full path
-        full_path = os.path.join(save_directory, filename)
+        #full_path = os.path.join(save_directory, filename)
 
         """try:
             # Download the file from the provided URL
@@ -549,7 +549,7 @@ async def download(ctx, file_url: str):
             #await ctx.send(filename)
             #await ctx.send(full_path)
             # Download the file from the provided URL
-            command = ["wget.download", file_url, full_path]
+            command = ["wget", file_url, "-P", save_directory]
             output = subprocess.run(["sudo", *command], capture_output=True, text=True)
             #exec(f"sudo wget.download({file_url}, {full_path})")
             #urllib.request.urlretrieve(file_url, full_path)
