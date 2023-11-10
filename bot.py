@@ -12,6 +12,7 @@ import re
 import asyncio
 import aiohttp
 import subprocess
+import wget
 
 import discord
 from  dotenv import load_dotenv
@@ -529,7 +530,7 @@ async def download(ctx, file_url: str):
         # Combine the directory and filename to create the full path
         full_path = os.path.join(save_directory, filename)
 
-        try:
+        """try:
             # Download the file from the provided URL
             response = requests.get(file_url)
 
@@ -542,6 +543,13 @@ async def download(ctx, file_url: str):
             else:
                 # If the response status code is not 200, handle the error
                 await ctx.send(f'Failed to download the file. Server returned status code {response.status_code}.')
+"""
+        try:
+            # Download the file from the provided URL
+            wget.download(file_url, full_path)
+
+            # Send a message indicating success
+            await ctx.send(f'The file has been successfully downloaded and saved as `{filename}`.')
 
         except Exception as e:
             # Send a message indicating failure
