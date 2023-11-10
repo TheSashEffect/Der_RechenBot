@@ -518,7 +518,7 @@ async def temp(ctx):
 
 
 @bot.command(name='download', help='Download a file and save it to the Raspberry Pi')
-async def download(ctx, file_url):
+async def download(ctx, file_url: str):
     if ctx.author.id == 726079395974086680:
         # Specify the directory where the file will be saved
         save_directory = '/mnt/drive/download'
