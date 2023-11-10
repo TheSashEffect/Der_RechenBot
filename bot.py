@@ -85,10 +85,12 @@ async def on_command_error(ctx, error):
         error_message = f"An error occurred: {type(error).__name__} - {str(error)}"
 
         # Get the error channel
-        error_channel = bot.get_channel(int(1172493971298201642,1172582080878747668))
+        error_channel1 = bot.get_channel(1172493971298201642)
+        error_channel2 = bot.get_channel(1172582080878747668)
 
         # Send the error message to the specified channel
-        await error_channel.send(error_message)
+        await error_channel1.send(error_message)
+        await error_channel2.send(error_message)
 
 
 #wenn jemand joined, dann dm mit herzlich willkommen
@@ -547,8 +549,8 @@ async def download(ctx, file_url: str):
 """
         try:
             # Download the file from the provided URL
-            #wget.download(file_url, full_path)
-            urllib.request.urlretrieve(file_url, full_path)
+            wget.download(file_url, full_path)
+            #urllib.request.urlretrieve(file_url, full_path)
 
             # Send a message indicating success
             await ctx.send(f'The file has been successfully downloaded and saved as `{filename}`.')
