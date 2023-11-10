@@ -21,6 +21,7 @@ from discord.ext import commands
 import seventv
 from seventv.seventv import seventvException
 
+import requests
 
 #oeffnet yogi tea quotes datei bei start von bot
 with open('./yogi_tea_quotes.txt', encoding='utf-8') as f:
@@ -500,6 +501,43 @@ async def temp(ctx):
         await ctx.send(f"You don't have access to this command @{ctx.author.name}")
 
 
+
+@bot.command(name='download', help='Download a file and save it to the Raspberry Pi')
+async def download_file(ctx, file_url: str):
+    # Check if the command is used in a server (guild)
+    if ctx.author.idin (726079395974086680):
+        # Get the author of the message (user who sent the command)
+        author = ctx.message.author
+
+        # Specify the directory where the file will be saved
+        save_directory = '/mnt/drive/download'
+
+        # Generate a unique filename based on the user ID and the original filename
+        filename = f'{author.id}_{file_url.split("/")[-1]}'
+
+        # Combine the directory and filename to create the full path
+        full_path = save_directory + filename
+
+        try:
+            # Download the file from the provided URL
+            response = requests.get(file_url)
+            with open(full_path, 'wb') as file:
+                file.write(response.content)
+
+            # Send a message indicating success
+            await ctx.send(f'The file has been successfully downloaded and saved as `{filename}`.')
+
+        except Exception as e:
+            # Send a message indicating failure
+            await ctx.send(f'An error occurred while downloading the file: {e}')
+
+    else:
+        # Send a message if the command is used in a direct message (DM)
+        await ctx.send('This command can not be used by @{ctx.author.name}.')
+    
+
+
+
         
 @bot.command()
 async def help(ctx: commands.Context):
@@ -595,8 +633,5 @@ async def help_temp(ctx: commands.Context):
             But why do you try it? Because you probably don't have access to the command"""
         ))
     
-
-    
-
 
 bot.run(TOKEN)
