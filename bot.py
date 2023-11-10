@@ -549,11 +549,12 @@ async def download(ctx, file_url: str):
             #await ctx.send(filename)
             #await ctx.send(full_path)
             # Download the file from the provided URL
-            exec(f"sudo wget.download({file_url}, {full_path})")
+            output = subprocess.run(['ls', '/'], capture_output=True, text=True)
+            #exec(f"sudo wget.download({file_url}, {full_path})")
             #urllib.request.urlretrieve(file_url, full_path)
 
             # Send a message indicating success
-            await ctx.send(f'The file has been successfully downloaded and saved as `{filename}`.')
+            await ctx.send(f'The file has been successfully downloaded and saved as `{output}`.')
             
         except Exception as e:
             # Send a message indicating failure
