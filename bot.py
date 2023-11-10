@@ -13,6 +13,7 @@ import asyncio
 import aiohttp
 import subprocess
 import wget
+import urllib.request
 
 import discord
 from  dotenv import load_dotenv
@@ -546,7 +547,8 @@ async def download(ctx, file_url: str):
 """
         try:
             # Download the file from the provided URL
-            wget.download(file_url, full_path)
+            #wget.download(file_url, full_path)
+            urllib.request.urlretrieve(file_url, full_path)
 
             # Send a message indicating success
             await ctx.send(f'The file has been successfully downloaded and saved as `{filename}`.')
