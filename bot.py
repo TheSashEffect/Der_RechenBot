@@ -545,16 +545,16 @@ async def download(ctx, file_url):
 """
         try:
             
-            await ctx.send(file_url)
-            await ctx.send(filename)
-            await ctx.send(full_path)
-            """# Download the file from the provided URL
-            wget.download(file_url, full_path)
-            #urllib.request.urlretrieve(file_url, full_path)
+            #await ctx.send(file_url)
+            #await ctx.send(filename)
+            #await ctx.send(full_path)
+            # Download the file from the provided URL
+            #wget.download(file_url, full_path)
+            urllib.request.urlretrieve(file_url, full_path)
 
             # Send a message indicating success
             await ctx.send(f'The file has been successfully downloaded and saved as `{filename}`.')
-"""
+            
         except Exception as e:
             # Send a message indicating failure
             await ctx.send(f'An error occurred while downloading the file: {e}')
