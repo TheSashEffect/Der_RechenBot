@@ -549,7 +549,8 @@ async def download(ctx, file_url: str):
             #await ctx.send(filename)
             #await ctx.send(full_path)
             # Download the file from the provided URL
-            output = subprocess.run(["sudo", f'wget.download({file_url}, {full_path})'], capture_output=True, text=True)
+            command = ["wget.download", file_url, full_path]
+            output = subprocess.run(["sudo", *command], capture_output=True, text=True)
             #exec(f"sudo wget.download({file_url}, {full_path})")
             #urllib.request.urlretrieve(file_url, full_path)
 
