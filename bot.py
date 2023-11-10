@@ -75,18 +75,7 @@ async def on_ready():
     print(guildliste)
 
 
-@bot.event
-async def on_command_error(ctx, error):
-    # Check if the error is a command-related error
-    if isinstance(error, commands.CommandError):
-        # Get the error message
-        error_message = f"An error occurred: {type(error).__name__} - {str(error)}"
 
-        # Get the error channel
-        error_channel = bot.get_channel(int(1172493971298201642))
-
-        # Send the error message to the specified channel
-        await error_channel.send(error_message)
 
 
 #wenn jemand joined, dann dm mit herzlich willkommen
@@ -532,11 +521,16 @@ async def download(ctx, file_url: str):
         try:
             # Download the file from the provided URL
             response = requests.get(file_url)
-            with open(full_path, 'wb') as file:
-                file.write(response.content)
-
-            # Send a message indicating success
-            await ctx.send(f'The file has been successfully downloaded and saved as `{filename}`.')
+        
+            # Ensure that the response status code is 200 (OK)
+            if response.status_code == 200:
+                with open(full_path, 'wb') as file:
+                    file.write(response.content)
+                # Send a message indicating success
+                await ctx.send(f'The file has been successfully downloaded and saved as `{filename}`.')
+            else:
+                # If the response status code is not 200, handle the error
+                await ctx.send(f'Failed to download the file. Server returned status code {response.status_code}.')
 
         except Exception as e:
             # Send a message indicating failure
