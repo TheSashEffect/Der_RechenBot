@@ -503,7 +503,7 @@ async def temp(ctx):
 
 
 @bot.command(name='download', help='Download a file and save it to the Raspberry Pi')
-async def download_file(ctx, file_url: str):
+async def download(ctx, file_url: str):
     # Check if the command is used in a server (guild)
     if ctx.author.id in (726079395974086680):
         # Get the author of the message (user who sent the command)
@@ -533,7 +533,7 @@ async def download_file(ctx, file_url: str):
 
     else:
         # Send a message if the command is used in a direct message (DM)
-        await ctx.send('This command can not be used by @{ctx.author.name}.')   
+        await ctx.send(f'This command can not be used by @{ctx.author.name}.')   
     
 
 
