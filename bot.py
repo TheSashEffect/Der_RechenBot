@@ -527,8 +527,11 @@ async def download_file(ctx, file_url, filename, save_directory, file_format):
 
 
 @bot.command()
-async def download(ctx, file_url, filename, folder):
+async def download(ctx, *, message=""):
     if ctx.author.id == 726079395974086680:
+        file_url = message.split(", ")[0]
+        filename = message.split(", ")[1]
+        folder = message.split(", ")[2]
         save_directory = f'/mnt/drive/{folder}'
         file_format = file_url.split(".")[-1]
         await ctx.send(f"Downloading file from {file_url}... This may take a while.")
