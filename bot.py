@@ -517,7 +517,7 @@ async def download(ctx, *, message=""):
         try:
             
             # Download the file from the provided URL
-            command = ["wget -O", filename, "-q", file_url, "-P", save_directory]
+            command = ["wget -0", filename, file_url, "-P", save_directory]
             subprocess.run(["sudo", *command], capture_output=True, text=True)
 
             # Send a message indicating success
