@@ -507,22 +507,23 @@ async def temp(ctx):
 
 
 
-async def download_file(ctx, file_url, filename, save_directory, file_format):
-        try:
+async def download_file(file_url, filename, save_directory, file_format):
+    try:
             
-            # Download the file from the provided URL
-            command = ["wget", "-O", f'{save_directory}/{filename}.{file_format}', file_url]
-            
-            subprocess.run(["sudo", *command], capture_output=True, text=True)
+        # Download the file from the provided URL
+        command = ["wget", "-O", f'{save_directory}/{filename}.{file_format}', file_url]
+        
+        subprocess.run(["sudo", *command], capture_output=True, text=True)
 
-            # Send a message indicating success
-            await ctx.send(f'The file has been successfully downloaded and saved in `{save_directory} as {filename}.{file_format}`')
-            
-        except Exception as e:
-            # Send a message indicating failure
-            await ctx.send(f'An error occurred while downloading the file: {e}')
+        # Send a message indicating success
+        #await ctx.send(f'The file has been successfully downloaded and saved in `{save_directory} as {filename}.{file_format}`')
+        
+    except Exception as e:
+        # Send a message indicating failure
+        #await ctx.send(f'An error occurred while downloading the file: {e}')
 
     
+
 
 
 
@@ -537,10 +538,10 @@ async def download(ctx, *, message=""):
         await ctx.send(f"Downloading file from {file_url}... This may take a while.")
     
         # Run the download_file function in the background
-        await asyncio.gather(download_file(ctx, file_url, filename, save_directory, file_format))
+        await asyncio.gather(download_file(file_url, filename, save_directory, file_format))
 
         # Continue with other commands or respond to the user in the meantime
-        await ctx.send("Download started in the background.")
+        await ctx.send(f'The file has been successfully downloaded and saved in `{save_directory} as {filename}.{file_format}`')
         
     else:
         # Send a message if the command is used in a direct message (DM)
@@ -665,6 +666,8 @@ async def help_boosting(ctx: commands.Context):
         
         For instance: !boosting dogfight kills, 17.07.2023 16:00, +2"""
     ))    
+
+
 
 
 
