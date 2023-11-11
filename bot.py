@@ -9,6 +9,7 @@ import string
 import re
 import aiohttp
 import subprocess
+import asyncio
 
 import discord
 from  dotenv import load_dotenv
@@ -506,7 +507,6 @@ async def temp(ctx):
 
 
 
-#@bot.command()
 async def download_file(ctx, file_url, filename, save_directory, file_format):
         try:
             
