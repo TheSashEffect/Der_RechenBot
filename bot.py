@@ -519,7 +519,6 @@ async def download(ctx, *, message=""):
             
             # Download the file from the provided URL
             command = ["wget", "-O", f'{save_directory}/{filename}.{file_format}', file_url]
-            await ctx.send(command, file_url, filename, save_directory)
             
             subprocess.run(["sudo", *command], capture_output=True, text=True)
 
