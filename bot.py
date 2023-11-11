@@ -533,8 +533,9 @@ async def download(ctx, *, message=""):
         filename = message.split(", ")[1]
         folder = message.split(", ")[2]
         save_directory = f'/mnt/drive/{folder}'
-        file_format = file_url.split(".")[-1]
-        await ctx.send(f"Downloading file from {file_url}... This may take a while.")
+        file_format = file_url.split(".")[-1].split("?")[0]
+        await ctx.send(f"""Downloading file from {file_url}
+                       ... This may take a while.""")
     
         # Run the download_file function in the background
         await asyncio.gather(download_file(file_url, filename, save_directory, file_format))
