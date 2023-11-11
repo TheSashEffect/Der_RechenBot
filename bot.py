@@ -4,17 +4,11 @@
 import os
 import random
 import praw
-import asyncpraw
 import datetime
-import time
 import string
 import re
-import asyncio
 import aiohttp
 import subprocess
-import wget
-import urllib.request
-from tqdm import tqdm
 
 import discord
 from  dotenv import load_dotenv
@@ -23,8 +17,6 @@ from discord.ext import commands
 
 import seventv
 from seventv.seventv import seventvException
-
-import requests
 
 #oeffnet yogi tea quotes datei bei start von bot
 with open('./yogi_tea_quotes.txt', encoding='utf-8') as f:
@@ -519,14 +511,13 @@ async def download(ctx, *, message=""):
     if ctx.author.id == 726079395974086680:
         # Specify the directory where the file will be saved
         file_url = message.split(", ")[0]
-        name = message.split(", ")[1]
+        filename = message.split(", ")[1]
         folder = message.split(", ")[2]
         save_directory = f'/mnt/drive/{folder}'
-        #file_url: str
         try:
             
             # Download the file from the provided URL
-            command = ["wget", file_url, "-P", save_directory, name]
+            command = ["wget -O", filename, "-q", file_url, "-P", save_directory]
             subprocess.run(["sudo", *command], capture_output=True, text=True)
 
             # Send a message indicating success
