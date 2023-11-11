@@ -14,6 +14,7 @@ import aiohttp
 import subprocess
 import wget
 import urllib.request
+from tqdm import tqdm
 
 import discord
 from  dotenv import load_dotenv
@@ -498,10 +499,6 @@ async def emote(ctx: commands.Context, *, query: str = ""):
         await ctx.send("https://cdn.7tv.app/emote/60abf171870d317bef23d399/2x.gif")
         return await ctx.send(embed = discord.Embed(description="I didn't find any emotes", color=ctx.author.color))
     url = f'https:{random.choice(data).host_url}'
-    """async with httpSession.get(f'{url}/2x.gif') as response:
-        if response.status != 200:
-            return await ctx.send(f'{url}/2x.png')
-        await ctx.send(f'{url}/2x.gif')"""
     await ctx.send(f'{url}/2x.gif')
         
     await mySevenTvSession.close() 
@@ -517,16 +514,19 @@ async def temp(ctx):
 
 
 
-@bot.command(name='download', help='Download a file and save it to the Raspberry Pi')
-async def download(ctx, file_url: str):
+@bot.command()
+async def download(ctx, *, message=""):
     if ctx.author.id == 726079395974086680:
         # Specify the directory where the file will be saved
-        save_directory = '/mnt/drive/download'
-
+        file_url = message.split(", ")[0]
+        name = message.split(", ")[1]
+        folder = message.split(", ")[2]
+        save_directory = f'/mnt/drive/{folder}'
+        #file_url: str
         try:
             
             # Download the file from the provided URL
-            command = ["wget", file_url, "-P", save_directory]
+            command = ["wget", file_url, "-P", save_directory, name]
             subprocess.run(["sudo", *command], capture_output=True, text=True)
 
             # Send a message indicating success
@@ -555,6 +555,7 @@ async def help(ctx: commands.Context):
         name = "Commands:", 
         value = f'''
         boosting
+        download
         emote
         f
         happy_birthday
@@ -636,6 +637,27 @@ async def help_temp(ctx: commands.Context):
             description="""Gives you the current server temperature.
             But why do you try it? Because you probably don't have access to the command"""
         ))
+    
+    
+@bot.command()
+async def help_download(ctx: commands.Context):
+    await ctx.send(embed = discord.Embed(
+        title="download",
+        description="Downloads a file with a provided URL to a folder on the Raspberry Pi."
+    ))
+    
+    
+@bot.command()
+async def help_boositng(ctx: commands.Context):
+    await ctx.send(embed = discord.Embed(
+        title="boosting {type of boosting}, {boosting date and time}, {your current time zone}",
+        description="""Creates a boosting session.
+        Boosting date and time format: dd.mm.yyyy HH:MM
+        e.g.: 17.07.2023 16:00
+        The current timezone in +-n depending on the timezone you're in.
+        
+        For instance: !boosting dogfight kills, 17.07.2023 16:00, +2"""
+    ))    
     
 
 bot.run(TOKEN)
