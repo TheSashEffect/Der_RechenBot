@@ -537,7 +537,7 @@ async def download(ctx, *, message=""):
         await ctx.send(f"Downloading file from {file_url}... This may take a while.")
     
         # Run the download_file function in the background
-        bot.loop.create_task(download_file(ctx, file_url, filename, save_directory, file_format))
+        await asyncio.gather(download_file(ctx, file_url, filename, save_directory, file_format))
 
         # Continue with other commands or respond to the user in the meantime
         await ctx.send("Download started in the background.")
