@@ -506,15 +506,8 @@ async def temp(ctx):
 
 
 
-@bot.command()
-async def download(ctx, *, message=""):
-    if ctx.author.id == 726079395974086680:
-        # Specify the directory where the file will be saved
-        file_url = message.split(", ")[0]
-        filename = message.split(", ")[1]
-        folder = message.split(", ")[2]
-        save_directory = f'/mnt/drive/{folder}'
-        file_format = file_url.split(".")[-1]
+#@bot.command()
+async def download_file(ctx, file_url, filename, save_directory, file_format):
         try:
             
             # Download the file from the provided URL
@@ -529,11 +522,26 @@ async def download(ctx, *, message=""):
             # Send a message indicating failure
             await ctx.send(f'An error occurred while downloading the file: {e}')
 
+    
+
+
+
+@bot.command()
+async def download(ctx, file_url, filename, folder):
+    if ctx.author.id == 726079395974086680:
+        save_directory = f'/mnt/drive/{folder}'
+        file_format = file_url.split(".")[-1]
+        await ctx.send(f"Downloading file from {file_url}... This may take a while.")
+    
+        # Run the download_file function in the background
+        bot.loop.create_task(download_file(ctx, file_url, filename, save_directory, file_format))
+
+        # Continue with other commands or respond to the user in the meantime
+        await ctx.send("Download started in the background.")
+        
     else:
         # Send a message if the command is used in a direct message (DM)
-        await ctx.send(f'This command can not be used by @{ctx.author.name}.')
-
-
+        await ctx.send(f'This command can not be used by @{ctx.author.name}.')    
 
         
 @bot.command()
