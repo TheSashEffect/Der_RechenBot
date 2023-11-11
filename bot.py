@@ -506,7 +506,6 @@ async def temp(ctx):
         await ctx.send(f"You don't have access to this command @{ctx.author.name}")
 
 
-
 async def download_file(file_url, filename, save_directory, file_format):
     try:
             
@@ -517,11 +516,11 @@ async def download_file(file_url, filename, save_directory, file_format):
 
         # Send a message indicating success
         #await ctx.send(f'The file has been successfully downloaded and saved in `{save_directory} as {filename}.{file_format}`')
-        
+        return
     except Exception as e:
         # Send a message indicating failure
         #await ctx.send(f'An error occurred while downloading the file: {e}')
-
+        return
     
 
 
