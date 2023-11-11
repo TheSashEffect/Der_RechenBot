@@ -644,7 +644,7 @@ async def help_download(ctx: commands.Context):
     
     
 @bot.command()
-async def help_boositng(ctx: commands.Context):
+async def help_boosting(ctx: commands.Context):
     await ctx.send(embed = discord.Embed(
         title="boosting {type of boosting}, {boosting date and time}, {your current time zone}",
         description="""Creates a boosting session.
