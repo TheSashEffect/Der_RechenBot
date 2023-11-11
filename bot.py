@@ -514,10 +514,11 @@ async def download(ctx, *, message=""):
         filename = message.split(", ")[1]
         folder = message.split(", ")[2]
         save_directory = f'/mnt/drive/{folder}'
+        file_format = file_url.split(".")[-1]
         try:
             
             # Download the file from the provided URL
-            command = ["wget", "-O", f'{save_directory}/{filename}', file_url]
+            command = ["wget", "-O", f'{save_directory}/{filename}.{file_format}', file_url]
             await ctx.send(command, file_url, filename, save_directory)
             
             subprocess.run(["sudo", *command], capture_output=True, text=True)
