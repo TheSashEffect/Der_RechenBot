@@ -523,7 +523,7 @@ async def download(ctx, *, message=""):
             subprocess.run(["sudo", *command], capture_output=True, text=True)
 
             # Send a message indicating success
-            await ctx.send(f'The file has been successfully downloaded and saved in `{save_directory}/{filename}`.')
+            await ctx.send(f'The file has been successfully downloaded and saved in `{save_directory} as {filename}.{file_format}`')
             
         except Exception as e:
             # Send a message indicating failure
@@ -635,8 +635,11 @@ async def help_temp(ctx: commands.Context):
 @bot.command()
 async def help_download(ctx: commands.Context):
     await ctx.send(embed = discord.Embed(
-        title="download",
-        description="Downloads a file with a provided URL to a folder on the Raspberry Pi."
+        title="download {URL-Link}, {name of the saved file}, [name of the folder]",
+        description="""Downloads a file with a provided URL to a folder on the Raspberry Pi.
+        The file gets saved as the name you give it but you can't access this command.
+        
+        For instance: !download https://example.com, example name, example folder"""
     ))
     
     
@@ -651,6 +654,7 @@ async def help_boositng(ctx: commands.Context):
         
         For instance: !boosting dogfight kills, 17.07.2023 16:00, +2"""
     ))    
-    
+
+
 
 bot.run(TOKEN)
