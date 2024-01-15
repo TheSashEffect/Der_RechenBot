@@ -20,7 +20,7 @@ import seventv
 from seventv.seventv import seventvException
 
 #oeffnet yogi tea quotes datei bei start von bot
-with open('/yogi_tea_quotes.txt', encoding='utf-8') as f:
+with open('/home/Sascha/github/Der_RechenBot/yogi_tea_quotes.txt', encoding='utf-8') as f:
     yogi_tea_quotes = f.read().split("|") 
 
 
