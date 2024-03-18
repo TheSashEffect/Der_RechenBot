@@ -20,7 +20,7 @@ import seventv
 from seventv.seventv import seventvException
 
 #oeffnet yogi tea quotes datei bei start von bot
-with open('/home/Sascha/github/Der_RechenBot/yogi_tea_quotes.txt', encoding='utf-8') as f:
+with open('yogi_tea_quotes.txt', encoding='utf-8') as f:
     yogi_tea_quotes = f.read().split("|") 
 
 
@@ -40,11 +40,11 @@ TOKEN = os.getenv('DISCORD_TOKEN')
 
 
 #Zugangsdaten fur Reddit damit der Bot posts holen kann        
-reddit = praw.Reddit(client_id='aRrwturDzMingtn95Mmbvw',
-                     client_secret='JlgeXUfvBEeYVkE5pZG4-ipc7dSb5Q',
-                     password='ErTzUi123456',
-                     user_agent='pc:Discord App:v1.0 (by /u/der_rechenbot)',
-                     username='Der_RechenBot')
+reddit = praw.Reddit(client_id=os.getenv("client_id"),
+                     client_secret=os.getenv("client_secret"),
+                     password=os.getenv("password"),
+                     user_agent=os.getenv("user_agent"),
+                     username=os.getenv("username"))
 
 
 
